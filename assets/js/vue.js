@@ -129,6 +129,23 @@ const Home = {
         quantity: 1,
       });
     },
+    //ajouteune quantité de +1 dans le panier à un élément (+)
+    cartPlusOne(product) {
+      product.quantity = product.quantity + 1;
+    },
+    //diminue une quantité de -1 dans le panier à un élément (-)
+    cartMinusOne(product, id) {
+      if (product.quantity == 1) {
+        //si il n'y a qu'un élément dans quantity, alors on le supprime du panier
+        this.cartRemoveItem(id);
+      } else {
+        product.quantity = product.quantity - 1;
+      }
+    },
+    //supprime un élément du panier (poubelle)
+    cartRemoveItem(id) {
+      this.cart.splice(id, 1);
+    },
   },
   //mounted permet de monter les composants : à chaque lancement de page il va lancer getLikeCookie
   mounted: () => {
