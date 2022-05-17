@@ -1,47 +1,60 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <title>Vue Project</title>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<head>
+  <title>Vue Project</title>
 
-    <link rel="icon" href="./assets/img/vueLogo.png" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
-    <link href="./assets/style/style.css" rel="stylesheet" />
-  </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <body>
-<div id="app">
+  <link rel="icon" href="./assets/img/vueLogo.png" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+  <link href="./assets/style/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="app">
     <nav>
       <div class="nav-container">
         <div id="logo">
-          <img src="./assets/img/wish-logo-800.png" alt="logo" />
+          <router-link to="/">
+            <img src="./assets/img/wish-logo-800.png" alt="logo" />
+          </router-link>
         </div>
 
         <ul id="icons">
           <li>
-            <i class="fas fa-user"></i>
+            <router-link to="/user-settings">
+              <i class="fas fa-user"></i>
+            </router-link>
           </li>
           <li>
-            <i class="fas fa-heart"></i>
-            <span id="nav-notif"></span>
+            <router-link to="/whish-list">
+              <i class="fas fa-heart"></i>
+              <span id="nav-notif"></span>
+            </router-link>
           </li>
           <li>
-            <i class="fas fa-shopping-cart"></i>
+            <router-link to="/shopping-cart">
+              <i class="fas fa-shopping-cart"></i>
+            </router-link>
           </li>
+          </router-link>
         </ul>
       </div>
     </nav>
-  </div>
-    <!-- VUEJS -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <!-- ROUTER VUEJS -->
-    <script src="https://unpkg.com/vue-router@4.0.5/dist/vue-router.global.js"></script>
 
-    <!-- SCRIPTS -->
-    <script src="./assets/js/vue.js"></script>
-    <script src="./assets/js/script.js"></script>
-  </body>
+    <router-view></router-view>
+
+  </div>
+  <!-- VUEJS @V3-->
+  <script src="https://unpkg.com/vue@3"></script>
+  <!-- VUEJS ROUTER @V4-->
+  <script src="https://unpkg.com/vue-router@4"></script>
+  <!-- SCRIPTS -->
+  <script src="./assets/js/vue.js"></script>
+  <script src="./assets/js/script.js"></script>
+</body>
+
 </html>

@@ -22,17 +22,21 @@ const ShoppingCart = {
   name: "ShoppingCart",
 };
 
+//Routes
+const routes = [
+  { path: "/", component: Home, name: "Home" },
+  { path: "/user-settings", component: UserSettings, name: "UserSettings" },
+  { path: "/whish-list", component: WishList, name: "WishList" },
+  { path: "/shopping-cart", component: ShoppingCart, name: "ShoppingCart" },
+];
+
 //Router
-const router = new VueRouter({
-  routes: [
-    { path: "/", component: Home },
-    { path: "user-settings", component: UserSettings, name: "UserSettings" },
-    { path: "whish-list", component: WishList, name: "WishList" },
-    { path: "shopping-cart", component: ShoppingCart, name: "ShoppingCart" },
-  ],
+const router = VueRouter.createRouter({
+  history: VueRouter.createWebHashHistory(),
+  routes,
 });
 
 //Call de VueJS
-const vue = new Vue({
-  router,
-}).$mount("#app");
+const app = Vue.createApp({});
+app.use(router);
+app.mount("#app");
