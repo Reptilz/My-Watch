@@ -83,6 +83,7 @@ const Home = {
       products,
       searchKey: "",
       liked: [],
+      cart: [],
     };
   },
   //computed est un listenner...
@@ -110,6 +111,22 @@ const Home = {
         setTimeout(() => {
           $cookies.set("like", JSON.stringify(this.liked));
         }, 300);
+      });
+    },
+    //ajoute des élements dans le panier
+    addToCart(product) {
+      //check si c'est déjà dans le tableau (éviter les doublons dans le panier)
+      for (let i = 0; i < this.cart.length; i++) {
+        if (this.cart[i].id === product.id) {
+          return this.cart[i].quantity++;
+        }
+      }
+      this.cart.push({
+        id: product.id,
+        img: product.img,
+        description: product.description,
+        price: product.price,
+        quantity: 1,
       });
     },
   },

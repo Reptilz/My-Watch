@@ -95,7 +95,7 @@
 
               <!-- add to cart -->
               <div class="add-to-cart">
-                <button>
+                <button v-on:click="addToCart(product)">
                   <i class="fas fa-shopping-cart"></i>
                 </button>
               </div>
@@ -107,8 +107,44 @@
               <h3>Désolé</h3>
               <p>Aucun résultat trouvé</p>
             </div>
-
         </div>
+
+            <!-- Affichage du panier -->
+            <div v-if="cart.length > 0" class="shopping-cart" id="shopping-cart">
+              <h2>Panier</h2>
+              <div class="item-group">
+              <!--img-->
+              <div v-for="product in cart" class="item">
+                  <div class="img-container">
+                    <img v-bind:src="product.img" alt="" />
+                  </div>
+
+                  <!--description-->
+                  <div class="item-description">
+                    <h4>{{ product.description }}</h4>
+                    <p>{{ product.price }}€</p>
+                  </div>
+
+                  <!-- quantité -->
+                  <div class="item-quantity">
+                    <h6>quantité : {{ product.quantity }}</h6>
+
+                  <!-- icons gestion du panier -->
+                  <div class="cart-icons">
+                      <button>
+                        <i class="fa fa-plus"></i>
+                      </button>
+                      <button>
+                        <i class="fa fa-minus"></i>
+                      </button>
+                      <button>
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
       </div>
     </div>
   </script>
