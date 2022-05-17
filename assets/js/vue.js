@@ -7,20 +7,30 @@ const Home = {
 //component UserSettings
 const UserSettings = {
   template: "<h1>UserSettings</h1>",
-  name: "Home",
+  name: "UserSettings",
 };
 
 //component WishList
 const WishList = {
   template: "<h1>WishList</h1>",
-  name: "Home",
+  name: "WishList",
 };
 
 //component ShoppingCart
 const ShoppingCart = {
   template: "<h1>ShoppingCart</h1>",
-  name: "Home",
+  name: "ShoppingCart",
 };
+
+//Router
+const router = new VueRouter({
+  routes: [
+    { path: "/", component: Home },
+    { path: "user-settings", component: UserSettings, name: "UserSettings" },
+    { path: "whish-list", component: WishList, name: "WishList" },
+    { path: "shopping-cart", component: ShoppingCart, name: "ShoppingCart" },
+  ],
+});
 
 //Call de VueJS
 const vue = new Vue({
