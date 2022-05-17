@@ -82,8 +82,10 @@ const Home = {
     return {
       products,
       searchKey: "",
+      liked: [],
     };
   },
+  //computed est un listenner...
   computed: {
     //search data
     filterList() {
@@ -93,6 +95,27 @@ const Home = {
           .includes(this.searchKey.toLowerCase());
       });
     },
+    //On récupère les cookies 'like'
+    getLikeCookie() {
+      let cookieValue = JSON.parse($cookies.get("like"));
+      //si cookieValue est vide alors on dit que this.like est vide sinon on ajoute les cookies dans liked (component Home)
+      cookieValue == null ? (this.liked = []) : (this.liked = cookieValue);
+    },
+  },
+  //la méthode se déclenche uniquement lors d'un click sur une checkbox
+  methods: {
+    setLikeCookie() {
+      document.addEventListener("input", () => {
+        //setTimeout pour faire une fonction asynchrone
+        setTimeout(() => {
+          $cookies.set("like", JSON.stringify(this.liked));
+        }, 300);
+      });
+    },
+  },
+  //mounted permet de monter les composants : à chaque lancement de page il va lancer getLikeCookie
+  mounted: () => {
+    this.getLikeCookie;
   },
 };
 
