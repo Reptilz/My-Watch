@@ -55,6 +55,11 @@
 
       <!-- search display -->
       <input v-model="searchKey" type="search" id="search" placeholder="Recherche..." autocomplete="off" />
+      <!-- CONDTION: Si la recherche contient un élément alors affiche le nb de résultat -->
+      <span v-if="searchKey && filterList.length >= 1">
+        <!-- affiche le s à résultat si il y a plusieurs résultats -->
+        {{ filterList.length }} résultat<span v-if="filterList.length >= 2">s</span>
+      </span>
       <!-- cards display -->
       <div class="card-cart-container">
         <div class="card-container">
@@ -92,9 +97,14 @@
                 </button>
               </div>
             </div>
-
-
           </div>
+
+            <!-- Search: si aucun résultat a été trouvé -->
+            <div v-if="filterList.length == 0" class="no-result">
+              <h3>Désolé</h3>
+              <p>Aucun résultat trouvé</p>
+            </div>
+
         </div>
       </div>
     </div>
