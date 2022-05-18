@@ -103,13 +103,14 @@
           </div>
 
             <!-- Search: si aucun résultat a été trouvé -->
-            <div v-if="filterList.length == 0" class="no-result">
+            <div v-if="filterList.length == []" class="no-result">
               <h3>Désolé</h3>
               <p>Aucun résultat trouvé</p>
             </div>
         </div>
 
             <!-- Affichage du panier -->
+            <transition name="cart-anim">
             <div v-if="cart.length > 0" class="shopping-cart" id="shopping-cart">
               <h2>Panier</h2>
               <div class="item-group">
@@ -144,7 +145,19 @@
                     </div>
                   </div>
                 </div>
+
+
+                <!-- Prix total -->
+                <div class="grand-total">
+                  <div class="total">
+                    <h2>Total</h2>
+                    <h2>{{ cartTotalAmount }}€</h2>
+                  </div>
+                  <h6>Total articles : {{ itemTotalAmount }}</h6>
+                </div>
+
             </div>
+          </transition>
       </div>
     </div>
   </script>

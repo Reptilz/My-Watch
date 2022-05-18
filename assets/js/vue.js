@@ -102,6 +102,22 @@ const Home = {
       //si cookieValue est vide alors on dit que this.like est vide sinon on ajoute les cookies dans liked (component Home)
       cookieValue == null ? (this.liked = []) : (this.liked = cookieValue);
     },
+    //calcule la somme totale du panier
+    cartTotalAmount() {
+      let total = 0;
+      for (let item in this.cart) {
+        total = total + this.cart[item].quantity * this.cart[item].price;
+      }
+      return total;
+    },
+    //affiche le total d'item dans le panier
+    itemTotalAmount() {
+      let itemTotal = 0;
+      for (let item in this.cart) {
+        itemTotal = itemTotal + this.cart[item].quantity;
+      }
+      return itemTotal;
+    },
   },
   //la méthode se déclenche uniquement lors d'un click sur une checkbox
   methods: {
